@@ -1,9 +1,14 @@
-function groupAnagrams(strs) {
-  const map = new Map();
-  for (const str of strs) {
-    const sortedStr = str.split("").sort().join("");
-    if (!map.has(sortedStr)) map.set(sortedStr, []);
-    map.get(sortedStr).push(str);
+const insertionSortRecursive = (arr, n = arr.length) => {
+  if (n <= 1) {
+    return arr;
   }
-  return [...map.values()];
-}
+  insertionSortRecursive(arr, n - 1);
+  const last = arr[n - 1];
+  let j = n - 2;
+  while (j >= 0 && arr[j] > last) {
+    arr[j + 1] = arr[j];
+    j--;
+  }
+  arr[j + 1] = last;
+  return arr;
+};
