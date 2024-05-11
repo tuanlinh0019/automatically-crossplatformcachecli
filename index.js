@@ -1,14 +1,9 @@
-const insertionSortRecursive = (arr, n = arr.length) => {
-  if (n <= 1) {
-    return arr;
+function isSubsequence(s, t) {
+  let i = 0;
+  let j = 0;
+  while (i < s.length && j < t.length) {
+    if (s[i] === t[j]) i++;
+    j++;
   }
-  insertionSortRecursive(arr, n - 1);
-  const last = arr[n - 1];
-  let j = n - 2;
-  while (j >= 0 && arr[j] > last) {
-    arr[j + 1] = arr[j];
-    j--;
-  }
-  arr[j + 1] = last;
-  return arr;
-};
+  return i === s.length;
+}
